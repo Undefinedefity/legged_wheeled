@@ -1,0 +1,273 @@
+<mujoco model="urdf_v1">
+    <compiler angle="radian" meshdir="meshes_v1" balanceinertia="false" />
+    <size njmax="500" nconmax="100" />
+	<option gravity="0 0 -9.806" iterations="50" solver="Newton" timestep="0.002" />
+	<default>
+		<geom contype="1" conaffinity="1" friction="0.6 0.3 0.3" rgba="0.5 0.6 0.7 0.6" margin="0.001" group="0" />
+		<default class="visual">
+			<geom contype="0" conaffinity="0" group="1" type="mesh" rgba="0.9 0.9 0.9 1.0" />
+		</default>
+		<light castshadow="false" diffuse="1 1 1" />
+		<motor ctrllimited="true" />
+		<camera fovy="60" />
+		<joint damping="0.01" armature="0.01" frictionloss="0.0" />
+	</default>
+
+    <asset>
+        <mesh name="base_link" file="base_link.STL" />
+        <mesh name="left_front_abad" file="left_front_abad.STL" />
+        <mesh name="left_front_hip" file="left_front_hip.STL" />
+        <mesh name="left_front_knee" file="left_front_knee.STL" />
+        <mesh name="left_front_wheel" file="left_front_wheel.STL" />
+        <mesh name="left_back_abad" file="left_back_abad.STL" />
+        <mesh name="left_back_hip" file="left_back_hip.STL" />
+        <mesh name="left_back_knee" file="left_back_knee.STL" />
+        <mesh name="left_back_wheel" file="left_back_wheel.STL" />
+        <mesh name="right_back_abad" file="right_back_abad.STL" />
+        <mesh name="right_back_hip" file="right_back_hip.STL" />
+        <mesh name="right_back_knee" file="right_back_knee.STL" />
+        <mesh name="right_back_wheel" file="right_back_wheel.STL" />
+        <mesh name="right_front_abad" file="right_front_abad.STL" />
+        <mesh name="right_front_hip" file="right_front_hip.STL" />
+        <mesh name="right_front_knee" file="right_front_knee.STL" />
+        <mesh name="right_front_wheel" file="right_front_wheel.STL" />
+        <mesh name="slope" file="20degree_slope.STL" />
+    </asset>
+
+    <asset>
+		<texture type="skybox" builtin="gradient" rgb1="1.0 1.0 1.0" rgb2="1.0 1.0 1.0" width="512" height="512" />
+		<texture name="plane" type="2d" builtin="flat" rgb1="1 1 1" rgb2="1 1 1" width="512" height="512" mark="cross" markrgb="0 0 0" />
+		<material name="plane" reflectance="0.0" texture="plane" texrepeat="3 3" texuniform="true" />
+	</asset>
+	<visual>
+		<rgba com="0.502 1.0 0 0.5" contactforce="0.2 0.98 0.2 0.8" contactpoint="1.0 1.0 0.6 0.4" />
+		<scale com="0.2" forcewidth="0.05" contactwidth="0.10" contactheight="0.04" />
+	</visual>
+    
+    <worldbody>
+        <light directional="true" diffuse=".8 .8 .8" pos="0 0 10" dir="0 0 -10" />
+		<camera name="track" mode="trackcom" pos="0 -1.3 1.6" xyaxes="1 0 0 0 0.707 0.707" />
+		<geom name="floor" type="plane" conaffinity="1" condim="3" contype="1" rgba="1 1 1 1" material="plane" pos="0 0 0" size="0 0 1" />
+
+        <!-- slope -->
+        <body name="slope" pos= '1 1 0' euler= '1.57 0 0'>
+            <geom type="mesh" mesh="slope" />
+        </body>
+
+        <!-- base -->
+        <body name='base_Link' pos = '0 0 0.5' euler='0 0 0'>
+        	<joint type="free" limited="false" frictionloss="disable" damping="0" stiffness="0" armature="0" />
+            <geom type='mesh' mesh='base_link' class='visual' />
+            <inertial pos='-1.8096E-05 3.0411E-05 0.016642' mass='7.15091' fullinertia='0.08601206412 0.14884094559 0.223369762 -5.760E-08 3.1321E-07 4.56436E-06' />
+            <geom name="base_link_collision" type="box" size="0.18 0.09 0.03" pos="0 0 0.03" euler="0 0 0" />
+            <site name='imu' pos='0 0 0' />
+
+            <!-- left_front_abad -->
+            <body name="left_front_abad" pos="0.17 0.12 0.002" quat="-3.67321e-06 -1 0 0">
+                <joint name="left_front_abad" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                <inertial pos="-7.04882e-07 0.000910475 0.0448439" quat="0.707093 0.00437729 -0.00443096 0.707093" mass="0.66819" diaginertia="0.000876856 0.000573746 0.000462542" />
+                <geom name='left_front_abad_collision' type='cylinder' size='0.045 0.015' pos='0.0 0.0 0.055' euler='1.57 0 1.57' />
+                <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_front_abad" class='visual' />
+
+                <!-- left_front_hip -->
+                <body name="left_front_hip" pos="0 -0.01835 0.057" quat="-0.376746 -0.37674 0.598388 -0.598383">
+                    <joint name="left_front_hip" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                    <inertial pos="0.016237 0.00015043 0.038947" quat="-0.00308164 0.798201 -0.00366155 0.602372" mass="0.84285" diaginertia="0.00157785 0.00135006 0.000637209" />
+                    <geom name='left_front_hip_collision' type='cylinder' size='0.045 0.015' pos='0.0 0.0 0.022' euler='0 0 0' />
+                    <geom name='left_front_hip_link_collision' type='capsule' size='0.012 0.06' pos='0.04 0.0 0.06' euler='1.57 1.6 0' />
+                    <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="left_front_hip" class='visual' />
+                
+                    <!-- left_front_knee -->
+                    <body name="left_front_knee" pos="0.152 0 0.06495" quat="0.287098 0 0 -0.957901">
+                        <joint name="left_front_knee" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                        <inertial pos="0.11232 1.3956e-06 0.012156" quat="5.05485e-06 0.738227 -1.77802e-05 0.674553" mass="0.70731" diaginertia="0.00156187 0.00124833 0.000480588" />
+                        <geom name='left_front_knee_collision' type='capsule' size='0.01 0.06' pos='0.06 0.0 0.0' euler='1.57 -1.6 0' />
+                        <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="left_front_knee" class='visual' />
+                    
+                        <!-- left_front_wheel-->
+                        <body name="left_front_wheel" pos="0.13 0 0.03845" quat="0.963576 0 0 0.267435">
+                            <joint name="left_front_wheel" type="hinge" pos="0 0 0" axis="0 0 1" limited="false" />
+                            <inertial pos="-1.9805e-11 7.7595e-12 0.00058064" quat="0.5 0.5 -0.5 0.5" mass="0.42087" diaginertia="0.002332 0.0011927 0.0011927" />
+                            <geom name='left_front_wheel_collision' type='cylinder' size='0.09 0.015' pos='0.0 0.0 0.0' euler='0 0 0' />
+                            <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="left_front_wheel" class='visual' />
+                        </body>
+                    </body>
+                </body>
+            </body>
+
+            <!-- left_back_abad -->
+            <body name="left_back_abad" pos="-0.17 0.12 0.002" quat="-3.67321e-06 -1 0 0">
+                <joint name="left_back_abad" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                <inertial pos="-7.0488e-07 0.00091048 0.044844" quat="0.707093 0.0043773 -0.00443097 0.707093" mass="0.66819" diaginertia="0.000876856 0.000573746 0.000462543" />
+                <geom name='left_back_abad_collision' type='cylinder' size='0.045 0.015' pos='-0.0 0.0 0.055' euler='1.57 0 1.57' />
+                <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="left_back_abad" class='visual' />
+
+                <!-- left_back_hip -->
+                <body name="left_back_hip" pos="0 -0.01885 0.057" quat="0.376741 0.376744 -0.598385 0.598385">
+                    <joint name="left_back_hip" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                    <inertial pos="0.0160946 -6.81384e-05 0.0384467" quat="0.000349173 0.798771 0.00155609 0.601632" mass="0.84285" diaginertia="0.00158039 0.00134949 0.000638276" />
+                    <geom name='left_back_hip_collision' type='cylinder' size='0.045 0.015' pos='0.0 0.0 0.022' euler='0 0 0' />
+                    <geom name='left_back_hip_link_collision' type='capsule' size='0.012 0.06' pos='0.04 0.0 0.06' euler='1.57 1.6 0' />
+                    <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="left_back_hip" class='visual' />
+                
+                    <!-- left_back_knee -->
+                    <body name="left_back_knee" pos="0.152 0 0.06445" quat="0.287098 0 0 -0.957901">
+                        <joint name="left_back_knee" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                        <inertial pos="0.11149 1.3852e-06 0.012112" quat="5.05051e-06 0.738225 -1.778e-05 0.674555" mass="0.70731" diaginertia="0.00156186 0.00124841 0.000480509" />
+                        <geom name='left_back_knee_collision' type='capsule' size='0.01 0.06' pos='0.06 0.0 0.0' euler='1.57 -1.6 0' />
+                        <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="left_back_knee" class='visual' />
+                    
+                        <!-- left_back_wheel-->
+                        <body name="left_back_wheel" pos="0.13 0 0.03845" quat="0.963576 0 0 0.267435">
+                            <joint name="left_back_wheel" type="hinge" pos="0 0 0" axis="0 0 1" limited="false" />
+                            <inertial pos="-1.9737e-11 9.0656e-12 0.00058064" quat="0.5 0.5 -0.5 0.5" mass="0.42087" diaginertia="0.002332 0.0011927 0.0011927" />
+                            <geom name='left_back_wheel_collision' type='cylinder' size='0.09 0.015' pos='0.0 0.0 0.0' euler='0 0 0' />
+                            <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="left_back_wheel" class='visual' />
+                        </body>
+                    </body>
+                </body>
+            </body>
+
+            <!-- right_back_abad -->
+            <body name="right_back_abad" pos="-0.17 -0.12 0.002" quat="-3.67321e-06 -1 0 0">
+                <joint name="right_back_abad" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                <inertial pos="7.04882e-07 -0.000910475 0.0448439" quat="0.707093 -0.0043773 0.00443097 0.707093" mass="0.66819" diaginertia="0.000876856 0.000573746 0.000462543" />
+                <geom name='right_back_abad_collision' type='cylinder' size='0.045 0.015' pos='-0.0 0.0 0.055' euler='1.57 0 1.57' />
+                <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="right_back_abad" class='visual' />
+            
+                <!-- right_back_hip -->
+                <body name="right_back_hip" pos="0 0.01885 0.057" quat="-0.376746 0.37674 0.598388 0.598383">
+                    <joint name="right_back_hip" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                    <inertial pos="0.016287 0.00013918 0.038447" quat="-0.00358055 0.7981 -0.00344349 0.602505" mass="0.84285" diaginertia="0.00157704 0.00134915 0.000637868" />
+                    <geom name='right_back_hip_collision' type='cylinder' size='0.045 0.015' pos='0.0 0.0 0.022' euler='0 0 0' />
+                    <geom name='right_back_hip_link_collision' type='capsule' size='0.012 0.06' pos='0.04 0.0 0.06' euler='1.57 1.6 0' />
+                    <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="right_back_hip" class='visual' />
+                
+                    <!-- right_back_knee -->
+                    <body name="right_back_knee" pos="0.152 0 0.06445" quat="0.287098 0 0 0.957901">
+                        <joint name="right_back_knee" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                        <inertial pos="0.11232 1.3953e-06 0.012156" quat="5.00252e-06 0.738505 -1.78496e-05 0.674248" mass="0.70731" diaginertia="0.00156202 0.00124893 0.000481023" />
+                        <geom name='right_back_knee_collision' type='capsule' size='0.01 0.06' pos='0.06 0.0 0.0' euler='1.57 -1.6 0' />
+                        <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="right_back_knee" class='visual' />
+
+                        <!-- right_back_wheel -->
+                        <body name="right_back_wheel" pos="0.13 0 0.03845" quat="0.963576 0 0 -0.267435">
+                            <joint name="right_back_wheel" type="hinge" pos="0 0 0" axis="0 0 1" limited="false" />
+                            <inertial pos="1.3145e-11 -1.7233e-11 0.00058064" quat="0.5 0.5 -0.5 0.5" mass="0.42087" diaginertia="0.002332 0.0011927 0.0011927" />
+                            <geom name='right_back_wheel_collision' type='cylinder' size='0.09 0.015' pos='0.0 0.0 0.0' euler='0 0 0' />
+                            <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="right_back_wheel" class='visual' />
+                        </body>
+                    </body>
+                </body>
+            </body>
+
+            <!-- right_front_abad -->
+            <body name="right_front_abad" pos="0.17 -0.12 0.002" quat="-3.67321e-06 -1 0 0">
+                <joint name="right_front_abad" type="hinge" pos="0 0 0" axis="0 0 -1" limited="true" range="-6.28 6.28" />
+                <inertial pos="7.0488e-07 -0.00091048 0.044844" quat="0.707096 -0.00390123 0.00395492 0.707096" mass="0.66819" diaginertia="0.000876843 0.000573711 0.000462521" />
+                <geom name='right_front_abad_collision' type='cylinder' size='0.045 0.015' pos='-0.0 0.0 0.055' euler='1.57 0 1.57' />
+                <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="right_front_abad" class='visual' />
+            
+                <!-- right_front_hip -->
+                <body name="right_front_hip" pos="0 0.01885 0.057" quat="0.376741 -0.376744 -0.598385 -0.598385">
+                    <joint name="right_front_hip" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                    <inertial pos="0.016171 -0.00013919 0.038447" quat="0.00187835 0.798102 0.00330577 0.60251" mass="0.84285" diaginertia="0.00157845 0.00134953 0.000636823" />
+                    <geom name='right_front_hip_collision' type='cylinder' size='0.045 0.015' pos='0.0 0.0 0.022' euler='0 0 0' />
+                    <geom name='right_front_hip_link_collision' type='capsule' size='0.012 0.06' pos='0.04 0.0 0.06' euler='1.57 1.6 0' />
+                    <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="right_front_hip" class='visual' />
+                
+                    <!-- right_front_knee -->
+                    <body name="right_front_knee" pos="0.152 0 0.06445" quat="0.287098 0 0 0.957901">
+                        <joint name="right_front_knee" type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                        <inertial pos="0.11292 1.4027e-06 0.012216" quat="5.00252e-06 0.738505 -1.78496e-05 0.674248" mass="0.70731" diaginertia="0.00156202 0.00124893 0.000481023" />
+                        <geom name='right_front_knee_collision' type='capsule' size='0.01 0.06' pos='0.06 0.0 0.0' euler='1.57 -1.6 0' />
+                        <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="right_front_knee" class='visual' />
+                    
+                        <!-- right_front_wheel -->
+                        <body name="right_front_wheel" pos="0.13 0 0.03845" quat="0.963576 0 0 -0.267435">
+                            <joint name="right_front_wheel" type="hinge" pos="0 0 0" axis="0 0 1" limited="false" />
+                            <inertial pos="1.9436e-11 8.051e-12 0.00058064" quat="0.5 0.5 -0.5 0.5" mass="0.42087" diaginertia="0.002332 0.0011927 0.0011927" />
+                            <geom name='right_front_wheel_collision' type='cylinder' size='0.09 0.015' pos='0.0 0.0 0.0' euler='0 0 0' />
+                            <geom type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="right_front_wheel" class='visual' />
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <!-- torque controller -->
+        <motor name="left_front_abad"   joint="left_front_abad"   gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="left_front_hip"    joint="left_front_hip"    gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="left_front_knee"   joint="left_front_knee"   gear="1" ctrllimited="true" ctrlrange="-16 16" />
+        <motor name="left_front_wheel"  joint="left_front_wheel"  gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="left_back_abad"    joint="left_back_abad"    gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="left_back_hip"     joint="left_back_hip"     gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="left_back_knee"    joint="left_back_knee"    gear="1" ctrllimited="true" ctrlrange="-16 16" />
+        <motor name="left_back_wheel"   joint="left_back_wheel"   gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="right_back_abad"   joint="right_back_abad"   gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="right_back_hip"    joint="right_back_hip"    gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="right_back_knee"   joint="right_back_knee"   gear="1" ctrllimited="true" ctrlrange="-16 16" />
+        <motor name="right_back_wheel"  joint="right_back_wheel"  gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="right_front_abad"  joint="right_front_abad"  gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="right_front_hip"   joint="right_front_hip"   gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <motor name="right_front_knee"  joint="right_front_knee"  gear="1" ctrllimited="true" ctrlrange="-16 16" />
+        <motor name="right_front_wheel" joint="right_front_wheel" gear="1" ctrllimited="true" ctrlrange="-10 10" />
+        <!-- position controller -->
+        <!-- <position name="left_front_abad_pos"   joint="left_front_abad"   gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="left_front_hip_pos"    joint="left_front_hip"    gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="left_front_knee_pos"   joint="left_front_knee"   gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="left_front_wheel_pos"  joint="left_front_wheel"  gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="left_back_abad_pos"    joint="left_back_abad"    gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="left_back_hip_pos"     joint="left_back_hip"     gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="left_back_knee_pos"    joint="left_back_knee"    gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="left_back_wheel_pos"   joint="left_back_wheel"   gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="right_back_abad_pos"   joint="right_back_abad"   gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="right_back_hip_pos"    joint="right_back_hip"    gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="right_back_knee_pos"   joint="right_back_knee"   gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="right_back_wheel_pos"  joint="right_back_wheel"  gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="right_front_abad_pos"  joint="right_front_abad"  gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="right_front_hip_pos"   joint="right_front_hip"   gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="right_front_knee_pos"  joint="right_front_knee"  gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" />
+        <position name="right_front_wheel_pos" joint="right_front_wheel" gear="1" kp="50" ctrllimited="true" ctrlrange="-10 10" /> -->
+    </actuator>
+
+    <sensor>
+        <!-- pos sensor index from 0-15 -->
+        <jointpos name="left_front_abad_pos"   joint="left_front_abad"   />
+        <jointpos name="left_front_hip_pos"    joint="left_front_hip"    />
+        <jointpos name="left_front_knee_pos"   joint="left_front_knee"   />
+        <jointpos name="left_front_wheel_pos"  joint="left_front_wheel"  />
+        <jointpos name="left_back_abad_pos"    joint="left_back_abad"    />
+        <jointpos name="left_back_hip_pos"     joint="left_back_hip"     />
+        <jointpos name="left_back_knee_pos"    joint="left_back_knee"    />
+        <jointpos name="left_back_wheel_pos"   joint="left_back_wheel"   />
+        <jointpos name="right_back_abad_pos"   joint="right_back_abad"   />
+        <jointpos name="right_back_hip_pos"    joint="right_back_hip"    />
+        <jointpos name="right_back_knee_pos"   joint="right_back_knee"   />
+        <jointpos name="right_back_wheel_pos"  joint="right_back_wheel"  />
+        <jointpos name="right_front_abad_pos"  joint="right_front_abad"  />
+        <jointpos name="right_front_hip_pos"   joint="right_front_hip"   />
+        <jointpos name="right_front_knee_pos"  joint="right_front_knee"  />
+        <jointpos name="right_front_wheel_pos" joint="right_front_wheel" />
+        <!-- vel sensor index from 16-31 -->
+        <jointvel name="left_front_abad_vel"   joint="left_front_abad"   />
+        <jointvel name="left_front_hip_vel"    joint="left_front_hip"    />
+        <jointvel name="left_front_knee_vel"   joint="left_front_knee"   />
+        <jointvel name="left_front_wheel_vel"  joint="left_front_wheel"  />
+        <jointvel name="left_back_abad_vel"    joint="left_back_abad"    />
+        <jointvel name="left_back_hip_vel"     joint="left_back_hip"     />
+        <jointvel name="left_back_knee_vel"    joint="left_back_knee"    />
+        <jointvel name="left_back_wheel_vel"   joint="left_back_wheel"   />
+        <jointvel name="right_back_abad_vel"   joint="right_back_abad"   />
+        <jointvel name="right_back_hip_vel"    joint="right_back_hip"    />
+        <jointvel name="right_back_knee_vel"   joint="right_back_knee"   />
+        <jointvel name="right_back_wheel_vel"  joint="right_back_wheel"  />
+        <jointvel name="right_front_abad_vel"  joint="right_front_abad"  />
+        <jointvel name="right_front_hip_vel"   joint="right_front_hip"   />
+        <jointvel name="right_front_knee_vel"  joint="right_front_knee"  />
+        <jointvel name="right_front_wheel_vel" joint="right_front_wheel" />
+    </sensor>         
+
+</mujoco>

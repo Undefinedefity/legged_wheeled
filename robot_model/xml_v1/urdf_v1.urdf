@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="urdf_v1">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-1.8096E-05 3.0411E-05 0.016642"
+        rpy="0 0 0" />
+      <mass
+        value="7.15091" />
+      <inertia
+        ixx="0.08601206412"
+        ixy="-5.760E-08"
+        ixz="3.1321E-07"
+        iyy="0.14884094559"
+        iyz="4.56436E-06"
+        izz="0.22336976288" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="left_front_abad">
+    <inertial>
+      <origin
+        xyz="-7.0488222420062E-07 0.000910475101713326 0.0448439174139079"
+        rpy="0 0 0" />
+      <mass
+        value="0.66819" />
+      <inertia
+        ixx="0.00057374551"
+        ixy="-1.5E-10"
+        ixz="8.44E-09"
+        iyy="0.00087679163"
+        iyz="5.16051E-06"
+        izz="0.000462606" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_front_abad.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_front_abad.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_front_abad"
+    type="revolute">
+    <origin
+      xyz="0.17 0.12 0.002"
+      rpy="-3.1416 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_front_abad" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="left_front_hip">
+    <inertial>
+      <origin
+        xyz="0.016237 0.00015043 0.038947"
+        rpy="0 0 0" />
+      <mass
+        value="0.84285" />
+      <inertia
+        ixx="0.00070797077"
+        ixy="-9.4558E-07"
+        ixz="0.00024809723"
+        iyy="0.0013500831"
+        iyz="-1.99417E-06"
+        izz="0.00150706502" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_front_hip.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_front_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_front_hip"
+    type="revolute">
+    <origin
+      xyz="0 -0.01835 0.057"
+      rpy="-1.5708 -1.1238 -3.1416" />
+    <parent
+      link="left_front_abad" />
+    <child
+      link="left_front_hip" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="left_front_knee">
+    <inertial>
+      <origin
+        xyz="0.11232 1.3956E-06 0.012156"
+        rpy="0 0 0" />
+      <mass
+        value="0.70731" />
+      <inertia
+        ixx="0.00048933853"
+        ixy="2.350E-08"
+        ixz="9.687451E-05"
+        iyy="0.00124833237"
+        iyz="-8.24E-09"
+        izz="0.00155311541" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_front_knee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_front_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_front_knee"
+    type="revolute">
+    <origin
+      xyz="0.152 0 0.06495"
+      rpy="0 0 -2.5592" />
+    <parent
+      link="left_front_hip" />
+    <child
+      link="left_front_knee" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="left_front_wheel">
+    <inertial>
+      <origin
+        xyz="-1.9805E-11 7.7595E-12 0.00058064"
+        rpy="0 0 0" />
+      <mass
+        value="0.42087" />
+      <inertia
+        ixx="0.0011927"
+        ixy="-1.6054E-13"
+        ixz="1.4074E-15"
+        iyy="0.0011927"
+        iyz="-1.0975E-15"
+        izz="0.002332" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_front_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_front_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_front_wheel"
+    type="revolute">
+    <origin
+      xyz="0.13 0 0.03845"
+      rpy="0 0 0.54146" />
+    <parent
+      link="left_front_knee" />
+    <child
+      link="left_front_wheel" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-10000"
+      upper="10000"
+      effort="10"
+      velocity="400" />
+  </joint>
+  <link
+    name="left_back_abad">
+    <inertial>
+      <origin
+        xyz="-7.0488E-07 0.00091048 0.044844"
+        rpy="0 0 0" />
+      <mass
+        value="0.66819" />
+      <inertia
+        ixx="0.00057374551"
+        ixy="-1.5E-10"
+        ixz="8.44E-09"
+        iyy="0.00087679163"
+        iyz="5.16051E-06"
+        izz="0.00046260685" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_back_abad.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_back_abad.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_back_abad"
+    type="revolute">
+    <origin
+      xyz="-0.17 0.12 0.002"
+      rpy="-3.1416 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_back_abad" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="left_back_hip">
+    <inertial>
+      <origin
+        xyz="0.0160946244873415 -6.81384147701303E-05 0.0384467072805027"
+        rpy="0 0 0" />
+      <mass
+        value="0.84285" />
+      <inertia
+        ixx="0.00071008294"
+        ixy="-7.1335E-07"
+        ixz="0.00024998657"
+        iyy="0.00134948874"
+        iyz="9.0305E-07"
+        izz="0.00150858182" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_back_hip.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_back_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_back_hip"
+    type="revolute">
+    <origin
+      xyz="0 -0.01885 0.057"
+      rpy="-1.5708 -1.1238 3.1416" />
+    <parent
+      link="left_back_abad" />
+    <child
+      link="left_back_hip" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="left_back_knee">
+    <inertial>
+      <origin
+        xyz="0.11149 1.3852E-06 0.012112"
+        rpy="0 0 0" />
+      <mass
+        value="0.70731" />
+      <inertia
+        ixx="0.00048925881"
+        ixy="2.350E-08"
+        ixz="0.00009687451"
+        iyy="0.00124841210"
+        iyz="-8.24E-09"
+        izz="0.00155311541" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_back_knee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_back_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_back_knee"
+    type="revolute">
+    <origin
+      xyz="0.152 0 0.06445"
+      rpy="0 0 -2.5592" />
+    <parent
+      link="left_back_hip" />
+    <child
+      link="left_back_knee" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="left_back_wheel">
+    <inertial>
+      <origin
+        xyz="-1.9737E-11 9.0656E-12 0.00058064"
+        rpy="0 0 0" />
+      <mass
+        value="0.42087" />
+      <inertia
+        ixx="0.0011927"
+        ixy="-1.6054E-13"
+        ixz="1.407E-15"
+        iyy="0.0011927"
+        iyz="-1.1007E-15"
+        izz="0.002332" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_back_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/left_back_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_back_wheel"
+    type="revolute">
+    <origin
+      xyz="0.13 0 0.03845"
+      rpy="0 0 0.54146" />
+    <parent
+      link="left_back_knee" />
+    <child
+      link="left_back_wheel" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-10000"
+      upper="10000"
+      effort="10"
+      velocity="400" />
+  </joint>
+  <link
+    name="right_back_abad">
+    <inertial>
+      <origin
+        xyz="7.04881872981566E-07 -0.000910475101723679 0.0448439174139074"
+        rpy="0 0 0" />
+      <mass
+        value="0.66819" />
+      <inertia
+        ixx="0.00057374551"
+        ixy="-1.5E-10"
+        ixz="-8.44E-09"
+        iyy="0.00087679163"
+        iyz="-5.16051E-06"
+        izz="0.00046260685" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_back_abad.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_back_abad.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_back_abad"
+    type="revolute">
+    <origin
+      xyz="-0.17 -0.12 0.002"
+      rpy="-3.1416 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_back_abad" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="right_back_hip">
+    <inertial>
+      <origin
+        xyz="0.016287 0.00013918 0.038447"
+        rpy="0 0 0" />
+      <mass
+        value="0.84285" />
+      <inertia
+        ixx="0.00070835323"
+        ixy="-1.68367E-06"
+        ixz="0.00024744136"
+        iyy="0.00134917410"
+        iyz="-1.84511E-06"
+        izz="0.00150653847" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_back_hip.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_back_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_back_hip"
+    type="revolute">
+    <origin
+      xyz="0 0.01885 0.057"
+      rpy="1.5708 -1.1238 3.1416" />
+    <parent
+      link="right_back_abad" />
+    <child
+      link="right_back_hip" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="right_back_knee">
+    <inertial>
+      <origin
+        xyz="0.11232 1.3953E-06 0.012156"
+        rpy="0 0 0" />
+      <mass
+        value="0.70731" />
+      <inertia
+        ixx="0.00048993124"
+        ixy="2.350E-08"
+        ixz="9.772595E-05"
+        iyy="0.00124892508"
+        iyz="-8.31E-09"
+        izz="0.00155311541" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_back_knee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_back_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_back_knee"
+    type="revolute">
+    <origin
+      xyz="0.152 0 0.06445"
+      rpy="0 0 2.5592" />
+    <parent
+      link="right_back_hip" />
+    <child
+      link="right_back_knee" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="right_back_wheel">
+    <inertial>
+      <origin
+        xyz="1.3145E-11 -1.7233E-11 0.00058064"
+        rpy="0 0 0" />
+      <mass
+        value="0.42087" />
+      <inertia
+        ixx="0.0011927"
+        ixy="5.2814E-14"
+        ixz="-7.2485E-16"
+        iyy="0.0011927"
+        iyz="1.6296E-15"
+        izz="0.002332" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_back_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_back_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_back_wheel"
+    type="revolute">
+    <origin
+      xyz="0.13 0 0.03845"
+      rpy="0 0 -0.54146" />
+    <parent
+      link="right_back_knee" />
+    <child
+      link="right_back_wheel" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-10000"
+      upper="10000"
+      effort="10"
+      velocity="400" />
+  </joint>
+  <link
+    name="right_front_abad">
+    <inertial>
+      <origin
+        xyz="7.0488E-07 -0.00091048 0.044844"
+        rpy="0 0 0" />
+      <mass
+        value="0.66819" />
+      <inertia
+        ixx="0.00057371109"
+        ixy="-1.9E-10"
+        ixz="-8.44E-09"
+        iyy="0.00087679163"
+        iyz="-4.60287E-06"
+        izz="0.00046257243" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_front_abad.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_front_abad.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_front_abad"
+    type="revolute">
+    <origin
+      xyz="0.17 -0.12 0.002"
+      rpy="-3.1416 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_front_abad" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="right_front_hip">
+    <inertial>
+      <origin
+        xyz="0.016171 -0.00013919 0.038447"
+        rpy="0 0 0" />
+      <mass
+        value="0.84285" />
+      <inertia
+        ixx="0.00070749263"
+        ixy="-2.0251E-07"
+        ixz="0.00024808897"
+        iyy="0.00134954051"
+        iyz="1.85238E-06"
+        izz="0.00150776548" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_front_hip.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_front_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_front_hip"
+    type="revolute">
+    <origin
+      xyz="0 0.01885 0.057"
+      rpy="1.5708 -1.1238 -3.1416" />
+    <parent
+      link="right_front_abad" />
+    <child
+      link="right_front_hip" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="right_front_knee">
+    <inertial>
+      <origin
+        xyz="0.11292 1.4027E-06 0.012216"
+        rpy="0 0 0" />
+      <mass
+        value="0.70731" />
+      <inertia
+        ixx="0.00048993124"
+        ixy="2.350E-08"
+        ixz="0.00009772595"
+        iyy="0.00124892508"
+        iyz="-8.31E-09"
+        izz="0.00155311541" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_front_knee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_front_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_front_knee"
+    type="revolute">
+    <origin
+      xyz="0.152 0 0.06445"
+      rpy="0 0 2.5592" />
+    <parent
+      link="right_front_hip" />
+    <child
+      link="right_front_knee" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="10"
+      velocity="275" />
+  </joint>
+  <link
+    name="right_front_wheel">
+    <inertial>
+      <origin
+        xyz="1.9436E-11 8.051E-12 0.00058064"
+        rpy="0 0 0" />
+      <mass
+        value="0.42087" />
+      <inertia
+        ixx="0.0011927"
+        ixy="-1.6054E-13"
+        ixz="-1.7652E-15"
+        iyy="0.0011927"
+        iyz="-2.7669E-16"
+        izz="0.002332" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_front_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdf_v1/meshes/right_front_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_front_wheel"
+    type="revolute">
+    <origin
+      xyz="0.13 0 0.03845"
+      rpy="0 0 -0.54146" />
+    <parent
+      link="right_front_knee" />
+    <child
+      link="right_front_wheel" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-10000"
+      upper="10000"
+      effort="10"
+      velocity="400" />
+  </joint>
+</robot>
